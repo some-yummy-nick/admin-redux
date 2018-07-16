@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Download from '../components/download/download';
 import {Link} from 'react-router-dom';
+import  _ from "lodash";
 
 import items from '../items.json';
 
@@ -10,6 +11,9 @@ class Table extends Component {
 
 	constructor(props) {
 		super(props);
+		this.state={
+			data:this.props.initialData
+		}
 	}
 
 	search = (e) => {
@@ -21,9 +25,8 @@ class Table extends Component {
 		}
 
 		var searchdata = this.props.initialData.filter(function (data) {
-			return data.toString().toLowerCase().indexOf(needle) > -1;
+			return _.values(data).toString().toLowerCase().indexOf(needle) > -1;
 		});
-
 		this.setState({data: searchdata});
 	};
 
@@ -57,7 +60,7 @@ class Table extends Component {
 						</tr>
 						</thead>
 						<tbody>
-						{items.map((item, index) => {
+						{this.state.data.map((item, index) => {
 							return (<tr key={index}>
 								<td className="table__prop table__big">{item.id}</td>
 								<td className="table__prop table__big">{item.email}
@@ -92,7 +95,7 @@ class TableList extends Component {
 
 	render() {
 		return (
-			<Table headers={headers}/>
+			<Table headers={headers} initialData={items}/>
 		);
 	}
 }

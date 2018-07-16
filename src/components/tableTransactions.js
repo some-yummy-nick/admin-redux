@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
 import Download from '../components/download/download';
+import transactions from '../transactions.json';
+import  _ from "lodash";
 
 var headers = ['ID', 'Transactions ID', 'Volume', 'Markup', 'Exchange Fee', 'Webmaster Fee', 'Revenue'];
-var data = [
-	[100, 'dfdf-234dfe-ffdf2-e43fdfd', 100, 0.5, 0.1, 0.2, 0.2],
-	[99, 'dfdf52-3dfe-ffdf2-e43fdfd', 10, 0.05, 0.02, 0.015, 0.015],
-	[99, 'dfdf52-3dfe-ffdf2-e43fdfd', 10, 0.05, 0.02, 0.015, 0.015]
-];
 
 class TotalMockup extends Component {
 	constructor(props) {
@@ -19,11 +16,9 @@ class TotalMockup extends Component {
 	totalMockup = 0;
 
 	render() {
-
-		for (var i = 0; i < data.length; i++) {
-			this.totalMockup += data[i][this.props.index];
+		for (var i = 0; i < this.state.data.length; i++) {
+			this.totalMockup += this.state.data[i][this.props["data-index"]];
 		}
-
 		return this.totalMockup.toFixed(2);
 
 	}
@@ -47,7 +42,7 @@ class Table extends Component {
 		}
 
 		var searchdata = this.props.initialData.filter(function (data) {
-			return data.toString().toLowerCase().indexOf(needle) > -1;
+			return _.values(data).toString().toLowerCase().indexOf(needle) > -1;
 		});
 
 		this.setState({data: searchdata});
@@ -60,7 +55,7 @@ class Table extends Component {
 				<div className="search">
 					<form className="search__form" onSubmit={this.search}>
 						<input type="text" className="search__input"/>
-						<button className="btn btn_border" type="submit">Find Webmaster</button>
+						<button className="btn btn_border" type="submit">Find Transactions</button>
 					</form>
 
 				</div>
@@ -86,19 +81,19 @@ class Table extends Component {
 								{this.state.data.length}
 							</td>
 							<td  className="table__prop table__big">
-								<TotalMockup index={2} initialData={data}/> BTC
+								<TotalMockup data-index="volume" initialData={this.state.data}/> BTC
 							</td>
 							<td  className="table__prop table__big">
-								<TotalMockup index={3} initialData={data}/> BTC (<TotalMockup index={3} initialData={data}/>%)
+								<TotalMockup data-index="markup" initialData={this.state.data}/> BTC (<TotalMockup data-index="markup" initialData={this.state.data}/>%)
 							</td>
 							<td  className="table__prop table__big">
-								<TotalMockup index={4} initialData={data}/> BTC (<TotalMockup index={4} initialData={data}/>%)
+								<TotalMockup data-index="exchangeFee" initialData={this.state.data}/> BTC (<TotalMockup data-index="exchangeFee" initialData={this.state.data}/>%)
 							</td>
 							<td  className="table__prop table__big">
-								<TotalMockup index={5} initialData={data}/> BTC (<TotalMockup index={5} initialData={data}/>%)
+								<TotalMockup data-index="webmasterFee" initialData={this.state.data}/> BTC (<TotalMockup data-index="webmasterFee" initialData={this.state.data}/>%)
 							</td>
 							<td  className="table__prop table__big">
-								<TotalMockup index={6} initialData={data}/> BTC (<TotalMockup index={6} initialData={data}/>%)
+								<TotalMockup data-index="revenue" initialData={this.state.data}/> BTC (<TotalMockup data-index="revenue" initialData={this.state.data}/>%)
 							</td>
 						</tr>
 
@@ -116,13 +111,13 @@ class Table extends Component {
 						<tbody>
 						{this.state.data.map((row, rowindex) =>
 							<tr key={rowindex}>
-								{<td className="table__prop table__big">{row[0]}</td>}
-								{<td className="table__prop table__big">{row[1]} </td>}
-								{<td className="table__prop table__big">{row[2] + " BTC"}</td>}
-								{<td className="table__prop table__big">{row[3] + " BTC" + " (" + row[3] + "%" + ")"}</td>}
-								{<td className="table__prop table__big">{row[4] + " BTC" + " (" + row[4] + "%" + ")"}</td>}
-								{<td className="table__prop table__big">{row[5] + " BTC" + " (" + row[5] + "%" + ")"}</td>}
-								{<td className="table__prop table__big">{row[6] + " BTC" + " (" + row[6] + "%" + ")"}</td>}
+								{<td className="table__prop table__big">{row.id}</td>}
+								{<td className="table__prop table__big">{row.transactionsId} </td>}
+								{<td className="table__prop table__big">{row.volume + " BTC"}</td>}
+								{<td className="table__prop table__big">{row.markup + " BTC" + " (" + row.markup + "%" + ")"}</td>}
+								{<td className="table__prop table__big">{row.exchangeFee + " BTC" + " (" + row.exchangeFee + "%" + ")"}</td>}
+								{<td className="table__prop table__big">{row.webmasterFee + " BTC" + " (" + row.webmasterFee + "%" + ")"}</td>}
+								{<td className="table__prop table__big">{row.revenue + " BTC" + " (" + row.revenue + "%" + ")"}</td>}
 							</tr>)}
 						</tbody>
 					</table>
@@ -135,7 +130,7 @@ class Table extends Component {
 class TableTransactions extends Component {
 	render() {
 		return (
-			<Table headers={headers} initialData={data}/>
+			<Table headers={headers} initialData={transactions}/>
 		);
 	}
 }

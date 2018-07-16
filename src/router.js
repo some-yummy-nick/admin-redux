@@ -6,7 +6,10 @@ import Promo from "./pages/promo";
 import Edit from "./pages/edit";
 import Info from "./pages/info";
 import NotFound from "./pages/notFound";
+import Empty from "./pages/empty";
 import List from "./pages/list";
+import {dispatchAuthClick} from "./actions";
+import store from './store/';
 
 const MainLayout = () => (
 
@@ -45,25 +48,35 @@ const MainLayout = () => (
 									</nav>
 								</div>
 							</div>
-							<div className="header__block">
-								<button type="button" className="logout">
-									<span className="icon icon_logout" aria-hidden="true"/>
-									<span className="logout__text">Exit</span>
-								</button>
-							</div>
+							{store.getState().auth ?
+								<div className="header__block" onClick={dispatchAuthClick}>
+									<button type="button" className="logout">
+										<span className="icon icon_logout" aria-hidden="true"/>
+										<span className="logout__text">Exit</span>
+									</button>
+								</div>
+								:
+								""}
+
 						</div>
 					</div>
 				</header>
 				<main>
 					<div className="container">
 						<Switch>
-							<Route exact path="/" component={Home}/>
-							<Route path="/list" component={List}/>
-							<Route path="/transactions" component={Transactions}/>
-							<Route path="/edit" component={Edit}/>
-							<Route path="/info" component={Info}/>
-							<Route path="/promo" component={Promo}/>
-							<Route component={NotFound}/>
+
+						{store.getState().auth ?
+							<Switch>
+								<Route exact path="/" component={Home}/>
+								<Route path="/list" component={List}/>
+								<Route path="/transactions" component={Transactions}/>
+								<Route path="/edit" component={Edit}/>
+								<Route path="/info" component={Info}/>
+								<Route path="/promo" component={Promo}/>
+								<Route component={NotFound}/>
+							</Switch>
+							: <Route component={Empty}/>}
+
 						</Switch>
 					</div>
 				</main>

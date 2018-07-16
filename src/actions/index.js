@@ -1,13 +1,17 @@
 import store from '../store/';
 
-function setTechnology (text) {
+function setAuth (boolean) {
 	return {
-		type: 'SET_TECHNOLOGY',
-		item: text
+		type: 'SET_AUTH',
+		auth: boolean
 	}
 }
 
-export default  function dispatchBtnAction() {
-	const item = "New";
-	store.dispatch(setTechnology(item));
-}
+export const dispatchAuthClick=()=> {
+	if(store.getState().auth==false){
+		store.dispatch(setAuth(true));
+	}
+	else{
+		store.dispatch(setAuth(false));
+	}
+};

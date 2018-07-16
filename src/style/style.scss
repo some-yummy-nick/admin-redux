@@ -336,3 +336,16 @@
 
 	}
 }
+
+.auth {
+	text-align: center;
+
+	&__form{
+		display: inline-block;
+
+	}
+
+	&__block{
+		margin-bottom: 20px;
+	}
+}

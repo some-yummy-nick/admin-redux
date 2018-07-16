@@ -1,0 +1,30 @@
+[
+	{
+		"id": 100,
+		"transactionsId":"dfdf-234dfe-ffdf2-e43fdfd",
+		"volume": 100,
+		"markup":0.5,
+		"exchangeFee":0.1,
+		"webmasterFee":0.2,
+		"revenue" :0.2
+	},
+	{
+		"id": 99,
+		"transactionsId":"dfdf52-3dfe-ffdf2-e43fdfd",
+		"volume": 10,
+		"markup":0.05,
+		"exchangeFee":0.01,
+		"webmasterFee":0.2,
+		"revenue" :0.2
+	},
+
+	{
+		"id": 98,
+		"transactionsId":"dfdf52-3dfe-ffdf2-e43fdfd",
+		"volume": 10,
+		"markup":0.05,
+		"exchangeFee":0.01,
+		"webmasterFee":0.2,
+		"revenue" :0.2
+	}
+]
