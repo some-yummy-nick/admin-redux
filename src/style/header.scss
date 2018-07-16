@@ -1,0 +1,29 @@
+@value screenSm from "./variables.css";
+
+.header {
+	position: relative;
+
+	&__blocks {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__block {
+		
+		&_wide {
+			flex-grow: 1;
+		}
+	}
+
+	@media screen and (max-width: screenSm) {
+
+		&__block {
+
+			&_wide {
+				flex-grow: inherit;
+				order: 1;
+			}
+		}
+	}
+}
