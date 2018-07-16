@@ -19,6 +19,12 @@ a:hover {
   color: color;
   text-decoration: underline; }
 
+a:focus {
+  text-decoration: none; }
+
+label {
+  margin-bottom: 0; }
+
 .break:after {
   content: "\A";
   white-space: pre; }

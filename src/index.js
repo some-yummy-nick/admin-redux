@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style/reboot.css';
 import './style/base.css';
+import './style/style.css';
 import './style/header.css';
 import './style/menu.css';
 import MainLayout from './router';

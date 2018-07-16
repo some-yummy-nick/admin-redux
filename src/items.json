@@ -1,0 +1,38 @@
+[
+	{
+		"id": 100,
+		"email": "mail@amil.ru",
+		"referrals": 1650,
+		"transactions": 21355,
+		"volume": 14,
+		"totalIncome": 24,
+		"totalWithdrawal": 144,
+		"balance": 4,
+		"revenueShare": "0.25%",
+		"label": "BestChange"
+	},
+	{
+		"id": 99,
+		"email": "tatar@amil.ru",
+		"referrals": 1280,
+		"transactions": 1355,
+		"volume": 9,
+		"totalIncome": 20,
+		"totalWithdrawal": 12,
+		"balance": 82,
+		"revenueShare": "0.29%",
+		"label": "Change"
+	},
+	{
+		"id": 98,
+		"email": "look@amil.ru",
+		"referrals": 156,
+		"transactions": 550,
+		"volume": 85,
+		"totalIncome": 9,
+		"totalWithdrawal": 115,
+		"balance": 529,
+		"revenueShare": "0.19%",
+		"label": "Change"
+	}
+]

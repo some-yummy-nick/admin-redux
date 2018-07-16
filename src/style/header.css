@@ -1,13 +1,11 @@
-@value screenSm from "./variables.css";
 .header {
-  position: relative; }
+  position: relative;
+  margin-bottom: 20px;
+  padding: 20px 0;
+  background: #000; }
   .header__blocks {
     display: flex;
     justify-content: space-between;
     align-items: center; }
   .header__block_wide {
     flex-grow: 1; }
-  @media screen and (max-width: screenSm) {
-    .header__block_wide {
-      flex-grow: inherit;
-      order: 1; } }

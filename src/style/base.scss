@@ -26,6 +26,14 @@ a {
 		color: color;
 		text-decoration: underline;
 	}
+
+	&:focus{
+		text-decoration: none;
+	}
+}
+
+label{
+	margin-bottom: 0;
 }
 
 .break:after {

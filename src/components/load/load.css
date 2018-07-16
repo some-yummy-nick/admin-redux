@@ -1,0 +1,38 @@
+.load__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  counter-reset: li;
+  margin-bottom: 20px; }
+
+.load__item + .load__item {
+  margin-top: 20px; }
+
+.load__item {
+  position: relative; }
+  .load__item:before {
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    bottom: 5px;
+    left: -2em;
+    width: 2em;
+    text-align: center; }
+  .load__item:not(:first-child) .load__title {
+    display: none; }
+
+.load__inner {
+  display: flex;
+  align-items: flex-end; }
+
+.load__title {
+  width: 100%;
+  padding: 10px; }
+
+.load__name {
+  min-width: 200px;
+  padding: 3px 10px;
+  border: 1px solid; }
+
+.load__block + .load__block {
+  margin-left: 20px; }
